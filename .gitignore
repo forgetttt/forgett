@@ -22,3 +22,6 @@
 
 #exclude Idea settings files
 /.idea/*
+
+#exclude ui node_modules fo
+./ui/node_modules/*
