@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'metrics/new'
+
   scope '/drivers' do
     get '/' => 'drivers#index'
   end
