@@ -1,5 +1,9 @@
-namespace :admin  do
-  task :fake_drivers => :environment do
-    Driver.create(:name => 'Johnny B. Goode', license_number => '12-234-45')
+namespace :db  do
+  task :import_drivers => :environment do
+    File.open(Rails.root+'lib/assets/drivers.json', 'r') do |file|
+      json = file.read
+      parsed_drivers = JSON.parse(json)
+      Driver.create parsed_drivers
+    end
   end
 end
