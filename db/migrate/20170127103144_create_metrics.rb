@@ -5,8 +5,8 @@ class CreateMetrics < ActiveRecord::Migration[5.0]
       t.integer :value
       t.decimal :lat
       t.decimal :lng
-      t.datetime :timestamp
-      t.integer :driver_id
+      t.timestamp :timestamp
+      t.belongs_to :driver, foreign_key: true
 
       t.timestamps
     end

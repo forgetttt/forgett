@@ -1,5 +1,6 @@
-namespace :db  do
-  task :import_drivers => :environment do
+namespace :import  do
+  desc 'import drivers from drivers.json'
+  task :drivers => :environment do
     File.open(Rails.root+'lib/assets/drivers.json', 'r') do |file|
       json = file.read
       parsed_drivers = JSON.parse(json)
