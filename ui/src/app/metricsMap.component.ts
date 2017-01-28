@@ -16,7 +16,7 @@ import {Coordinates} from "./metrics.service";
   `,
   styles:[ `
 .sebm-google-map-container {
-  height: 300px;
+  height: 600px;
 }
 `]
 })

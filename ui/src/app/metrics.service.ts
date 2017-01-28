@@ -38,6 +38,7 @@ export class MetricsService {
   }
 
   getMetricsByName(name: string):Observable<Array<Coordinates>> {
+    //Decimal is transformed to string on ruby side, but we need it to be number 
     return this.http.get(`/api/metrics/data/${name}`)
       .map((x:Response) => x.json().map((x) => ({lat: Number.parseFloat(x.lat), lng: Number.parseFloat(x.lng)})));
   }

@@ -24,7 +24,7 @@
 /.idea/*
 
 #exclude ui node_modules fo
-./ui/node_modules/*
+/ui/node_modules/*
 
 #exclude ui assets
-/app/assets/ui/*
+/public/ui/*

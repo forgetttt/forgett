@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "build": "node node_modules/angular-cli/bin/ng build --environment=\"prod\"  --output-path=\"../app/assets/ui\"",
+    "build": "node node_modules/angular-cli/bin/ng build --prod --suppress-sizes --aot --deploy-url=\"/ui\" --output-path=\"../public/ui\"",
     "start": "node node_modules/angular-cli/bin/ng serve --proxy proxy.conf.json"
   },
   "private": true,
