@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {MetricsSelectorComponent} from "./metricsSelector.component";
 import {MetricsService} from "./metrics.service";
 import {MetricsMapComponent} from "./metricsMap.component";
+import {AgmCoreModule} from "angular2-google-maps/core";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import {MetricsMapComponent} from "./metricsMap.component";
   imports: [
     BrowserModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyANydCyoEzZAfZcTGDQdLYQ9ctdiIuypDU'
+    }),
     HttpModule
   ],
   providers: [MetricsService],

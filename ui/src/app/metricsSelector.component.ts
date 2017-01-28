@@ -7,23 +7,38 @@ import 'rxjs/add/operator/first'
 @Component({
   selector: 'metrics-selector',
   template:`
-<h1>
-  metrics
-</h1>
-<select [(ngModel)]="driverId" (ngModelChange)="onDriverChange($event)">
+<h1>select metrics</h1>
+<div>
+  <span>Driver: </span>
+  <select [(ngModel)]="driverId" (ngModelChange)="onDriverChange($event)">
     <option *ngFor="let driver of drivers" [value]="driver.id">{{driver.name}}</option>
-</select>
+  </select>
+  <b> OR </b>
+  <span>Metric: </span>
+  <select [(ngModel)]="metricName" (ngModelChange)="onMetricNameChange($event)">
+    <option *ngFor="let name of metricNames" [value]="name">{{name}}</option>
+  </select>
+</div>
+
   
   `,
 })
 export class MetricsSelectorComponent {
   @Input() drivers: Array<Driver> = [];
-  @Output()  onDriverSelect: EventEmitter<string> = <EventEmitter<string>> new EventEmitter();
-  driverId:number;
+  @Input() metricNames: Array<string> = [];
+  @Output()  onDriverSelect: EventEmitter<number> = <EventEmitter<number>> new EventEmitter();
+  @Output()  onMetricSelect: EventEmitter<string> = <EventEmitter<string>> new EventEmitter();
+  driverId: number;
+  metricName: string;
   constructor() {}
 
-  onDriverChange(id:string) {
-    console.log(id);
+  onDriverChange(id:number) {
+    this.metricName = null;
     this.onDriverSelect.emit(id);
+  }
+
+  onMetricNameChange(name:string) {
+    this.driverId = null;
+    this.onMetricSelect.emit(name);
   }
 }

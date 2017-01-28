@@ -8,17 +8,13 @@ import 'rxjs/add/operator/map'
 
 
 export interface Coordinates {
-  lat:number,
-  lng:number
+  lat:number;
+  lng:number;
 }
 
-export interface Coordinates {
-  lat:number,
-  lng:number
-}
 export interface Driver {
-  id:number,
-  name:string
+  id:number;
+  name:string;
 }
 
 @Injectable()
@@ -27,10 +23,22 @@ export class MetricsService {
   }
 
   getDrivers():Observable<Array<Driver>> {
-    return this.http.get('/api/drivers').map((x:Response)=>x.json() as Array<Driver>);
+    return this.http.get('/api/drivers')
+      .map((x:Response) => x.json());
+  }
+
+  getMetricNames():Observable<Array<string>> {
+    return this.http.get('/api/metrics/names')
+      .map((x:Response) => x.json());
   }
 
   getMetricsByDriver(driverId: number):Observable<Array<Coordinates>> {
-    return this.http.get(`/api/drivers/${driverId}/metrics`).map((x:Response)=>x.json() as Array<Coordinates>);
+    return this.http.get(`/api/drivers/${driverId}/metrics`)
+      .map((x:Response) => x.json().map((x) => ({lat: Number.parseFloat(x.lat), lng: Number.parseFloat(x.lng)})));
+  }
+
+  getMetricsByName(name: string):Observable<Array<Coordinates>> {
+    return this.http.get(`/api/metrics/data/${name}`)
+      .map((x:Response) => x.json().map((x) => ({lat: Number.parseFloat(x.lat), lng: Number.parseFloat(x.lng)})));
   }
 }
