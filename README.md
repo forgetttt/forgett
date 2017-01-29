@@ -1,4 +1,9 @@
 # README
+Rake task
+```
+import:metrics
+```
+
 inorder to put the Angular ui into the application please to go the UI directory and run:
  ```
  npm install
